@@ -24,8 +24,8 @@
           <!-- All three Col -->
           <div class="mt-3 contains d-flex">
             <v-row>
-              <!-- First Cols -->
-              <v-col>
+              <!-- First Col -->
+              <v-col cols="12" md="4">
                 <v-card
                   title="Platform Setting"
                   subtitle="Account"
@@ -44,9 +44,9 @@
                   </v-card-text>
                 </v-card>
                 <v-card elevation="0">
-                  <v-card-sub-title class="ml-3 text-h6 tetx-weight">
-                    Application
-                  </v-card-sub-title>
+                  <v-card-subtitle class="ml-3 text-h6 text-weight"
+                    >Application</v-card-subtitle
+                  >
                   <v-card-text>
                     <v-switch
                       label="Email me when someone follows me"
@@ -57,8 +57,8 @@
                   </v-card-text>
                 </v-card>
               </v-col>
-              <!-- Seconed Cols -->
-              <v-col>
+              <!-- Second Col -->
+              <v-col cols="12" md="4">
                 <!-- First -->
                 <v-card elevation="0">
                   <div class="mt-3 d-flex justify-space-between align-center">
@@ -76,41 +76,32 @@
                     an illusion of equality).
                   </v-card-text>
                 </v-card>
-                <!-- second -->
+                <!-- Second -->
                 <v-card class="info mt-7 ml-4" elevation="0">
                   <div>
-                    <strong> Full Name</strong> :
-                    <span> Alec M. Thompson</span>
+                    <strong>Full Name</strong> : <span>Alec M. Thompson</span>
                   </div>
                   <div>
-                    <strong> Mobile</strong> :
-                    <span> (44) 123 1234 123</span>
+                    <strong>Mobile</strong> : <span>(44) 123 1234 123</span>
                   </div>
+                  <div><strong>Location</strong> : <span>USA</span></div>
                   <div>
-                    <strong> Location</strong> :
-                    <span> USA</span>
-                  </div>
-                  <div>
-                    <strong> Social</strong> :
+                    <strong>Social</strong> :
                     <v-icon>mdi-facebook</v-icon>
                     <v-icon>mdi-twitter</v-icon>
                     <v-icon>mdi-instagram</v-icon>
                   </div>
                 </v-card>
               </v-col>
-              <!-- Third Cols -->
-              <v-col>
+              <!-- Third Col -->
+              <v-col cols="12" md="4">
                 <v-card class="mx-auto" max-width="450" elevation="0">
                   <v-toolbar color="" elevation="0">
                     <v-btn icon="mdi-menu" variant="text"></v-btn>
-
                     <v-toolbar-title>Conversation</v-toolbar-title>
-
                     <v-spacer></v-spacer>
-
                     <v-btn icon="mdi-magnify" variant="text"></v-btn>
                   </v-toolbar>
-
                   <v-list :items="items" lines="three" item-props>
                     <template v-slot:subtitle="{ subtitle }">
                       <div v-html="subtitle"></div>

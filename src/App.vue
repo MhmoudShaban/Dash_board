@@ -100,7 +100,7 @@ export default {
           active: false,
           items: [
             {
-              title: "Overview",
+              title: "Products",
               icon: "mdi-view-dashboard",
               path: "/AboutView",
             },
