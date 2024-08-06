@@ -2,6 +2,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dash_Profile from "../views/Dash_Profile.vue";
 import AboutView from "../views/AboutView.vue";
+import ShowAll from "../views/ShowAll.vue"; //
+import EditItem from "@/views/EditItem.vue";
 
 const routes = [
   {
@@ -12,7 +14,17 @@ const routes = [
   {
     path: "/AboutView",
     name: "AboutView",
-    component:AboutView
+    component: AboutView,
+  },
+  {
+    path: "/show-all",
+    name: "ShowAll",
+    component: ShowAll,
+  },
+  {
+    path: "/edit",
+    name: "edit",
+    component: EditItem,
   },
 ];
 

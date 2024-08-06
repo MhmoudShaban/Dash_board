@@ -111,36 +111,36 @@
               </v-col>
             </v-row>
           </div>
-          <v-row class="mt-12 mb-5">
-            <v-col>
-              <v-card class="mx-auto my-4" max-width="400">
-                <img src="../assets/2.jpg" width="100%" contain />
-                <v-card-title>Project 1</v-card-title>
-                <v-card-subtitle>the First Project</v-card-subtitle>
-                <v-card-actions>
-                  <v-btn color="primary">Preview</v-btn>
-                </v-card-actions>
-              </v-card>
+          <v-row class="mt-4">
+            <v-col style="text-align: end">
+              <v-btn color="primary" @click="goToShowAll">Show All</v-btn>
             </v-col>
+          </v-row>
+          <v-row class="mb-5">
             <v-col>
-              <v-card class="mx-auto my-4" max-width="400">
-                <img src="../assets/2.jpg" width="100%" contain />
-                <v-card-title>Project 3</v-card-title>
-                <v-card-subtitle>the Second Project</v-card-subtitle>
-                <v-card-actions>
-                  <v-btn color="primary">Preview</v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-col>
-            <v-col>
-              <v-card class="mx-auto my-4" max-width="400">
-                <img src="../assets/2.jpg" width="100%" contain />
-                <v-card-title>Project 3</v-card-title>
-                <v-card-subtitle>the Third Project</v-card-subtitle>
-                <v-card-actions>
-                  <v-btn color="primary">Preview</v-btn>
-                </v-card-actions>
-              </v-card>
+              <v-table class="custom-table">
+                <thead>
+                  <tr>
+                    <th class="text-left">Name</th>
+                    <th class="text-left">Calories</th>
+                    <th class="text-left">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in desserts" :key="item.name">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.calories }}</td>
+                    <td>
+                      <v-icon small @click="editItem(item, index)"
+                        >mdi-pencil</v-icon
+                      >
+                      <v-icon small @click="deleteItem(index)"
+                        >mdi-delete</v-icon
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </v-table>
             </v-col>
           </v-row>
         </v-card>
@@ -150,10 +150,53 @@
 </template>
 
 <script>
+import eventBus from "@/EventBus";
 export default {
   name: "home-view",
   data() {
     return {
+      desserts: [
+        {
+          name: "Frozen Yogurt",
+          calories: 159,
+        },
+        {
+          name: "Ice cream sandwich",
+          calories: 237,
+        },
+        {
+          name: "Eclair",
+          calories: 262,
+        },
+        {
+          name: "Cupcake",
+          calories: 305,
+        },
+        {
+          name: "Gingerbread",
+          calories: 356,
+        },
+        {
+          name: "Jelly bean",
+          calories: 375,
+        },
+        {
+          name: "Lollipop",
+          calories: 392,
+        },
+        {
+          name: "Honeycomb",
+          calories: 408,
+        },
+        {
+          name: "Donut",
+          calories: 452,
+        },
+        {
+          name: "KitKat",
+          calories: 518,
+        },
+      ],
       items: [
         { type: "subheader", title: "Today" },
         {
@@ -190,6 +233,29 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    goToShowAll() {
+      this.$router.push({ name: "ShowAll" });
+    },
+    editItem(item, index) {
+      // الدالة الخاصة بتعديل العنصر
+      this.$router.push({ name: "edit", params: { item, index } });
+    },
+    deleteItem(index) {
+      // الدالة الخاصة بحذف العنصر
+      this.desserts.splice(index, 1);
+    },
+    updateItem({ item, index }) {
+      // تحديث العنصر في القائمة
+      this.$set(this.desserts, index, item);
+    },
+  },
+  created() {
+    eventBus.on("update-item", this.updateItem);
+  },
+  beforeMount() {
+    eventBus.off("update-item", this.updateItem);
   },
 };
 </script>
@@ -233,5 +299,39 @@ body {
 .info .v-icon {
   margin: 3px 5px;
   cursor: pointer;
+}
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+}
+
+.custom-table th {
+  background-color: #f9f9f9;
+  font-weight: 700;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+.custom-table td {
+  color: #3c4858;
+}
+
+.custom-table th {
+  color: #3c4858;
 }
 </style>
