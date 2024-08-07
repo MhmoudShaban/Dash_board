@@ -210,7 +210,7 @@ header.v-toolbar.v-toolbar--density-default.v-theme--light.v-locale--is-ltr.v-ap
 .d-flex.ml-1 {
   flex-wrap: nowrap !important;
 }
-.v-list-group__items .v-list-item[data-v-7ba5bd90] {
+.v-list-group__items .v-list-item {
   padding-inline-start: calc(-38px + var(--indent-padding)) !important;
 }
 </style>
