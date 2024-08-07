@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container max-width="">
     <v-row>
       <v-col cols="12">
         <div class="image">
@@ -13,6 +13,20 @@
           </div>
         </div>
       </v-col>
+    </v-row>
+    <v-row>
+      <h2
+        class="underline-text"
+        style="
+          padding: 10px;
+          margin-top: 20px;
+          font-weight: bold;
+          color: #3c4858;
+          text-transform: capitalize;
+        "
+      >
+        Show Products
+      </h2>
     </v-row>
     <v-row>
       <v-col
@@ -264,7 +278,7 @@ export default {
   background-size: cover;
   width: 100%;
   background-color: #8a8a82;
-  height: 244px;
+  height: 300px;
 }
 .text_div {
   padding-left: 1.5rem;
@@ -394,5 +408,20 @@ export default {
   50% {
     border-color: black;
   }
+}
+.underline-text {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-text::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  height: 2px;
+  width: 93%;
+  background-color: #dc3545;
+  border-radius: 2px;
 }
 </style>

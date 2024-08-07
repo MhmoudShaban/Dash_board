@@ -39,18 +39,24 @@
             :prepend-icon="item.icon"
             @click="navigateTo(item.path)"
           >
-            <v-list-item-content class="mr-12" style="cursor: pointer">
+            <v-list-item-content class="mr-5 ml-0 pa-0" style="cursor: pointer">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar elevation="0">
-      <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
-      <h2 class="ml-2 text-uppercase">Profile</h2>
-      <v-spacer></v-spacer>
-      <v-card class="mx-auto" max-width="400" elevation="0">
+    <v-container
+      fluid
+      class="d-flex flex-wrap justify-space-around align-center"
+    >
+      <div class="d-flex">
+        <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
+        <h2 class="ml-2 text-uppercase font-weight-bold">
+          Shop<span style="color: #dc3545">Wise</span>
+        </h2>
+      </div>
+      <v-card class="d-flex align-center" elevation="0">
         <v-card-text>
           <v-text-field
             :loading="loading"
@@ -63,25 +69,21 @@
             @click:append-inner="onClick"
           ></v-text-field>
         </v-card-text>
+        <v-btn icon class="ml-2">
+          <v-icon>mdi-account</v-icon>
+        </v-btn>
+
+        <v-btn icon class="ml-2">
+          <v-icon>mdi-bell</v-icon>
+        </v-btn>
+
+        <v-btn icon class="ml-2">
+          <v-icon>mdi-cog</v-icon>
+        </v-btn>
       </v-card>
-      <v-btn icon>
-        <v-icon>mdi-account</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-cog</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <v-container fluid>
-        <router-view />
-      </v-container>
-    </v-main>
+    </v-container>
+    <router-view />
+    <v-main> </v-main>
   </v-app>
 </template>
 
@@ -99,49 +101,33 @@ export default {
           icon: "mdi-view-dashboard-outline",
           active: false,
           items: [
+            { title: "Home", icon: "mdi-home", path: "/" },
             {
               title: "Products",
               icon: "mdi-view-dashboard",
-              path: "/AboutView",
+              path: "/Dash_Profile",
             },
-            { title: "Stats", icon: "mdi-chart-bar" },
+
+            {
+              title: "Product Statistics",
+              icon: "mdi-chart-bar",
+              path: "/ChartsView",
+            },
           ],
         },
         {
           title: "User Caharts",
           icon: "mdi-account-multiple-outline",
-          active: false,
-          items: [
-            { title: "Users", icon: "mdi-account" },
-            { title: "Roles", icon: "mdi-account-key" },
-          ],
         },
         {
           title: "Settings",
           icon: "mdi-cog-outline",
           active: false,
-          items: [
-            { title: "Profile", icon: "mdi-account" },
-            { title: "Preferences", icon: "mdi-tune" },
-          ],
         },
         {
           title: "Reports",
           icon: "mdi-file-document-outline",
           active: false,
-          items: [
-            { title: "Daily", icon: "mdi-file-chart" },
-            { title: "Monthly", icon: "mdi-calendar" },
-          ],
-        },
-        {
-          title: "Support",
-          icon: "mdi-lifebuoy",
-          active: false,
-          items: [
-            { title: "FAQ", icon: "mdi-help-circle" },
-            { title: "Contact", icon: "mdi-phone" },
-          ],
         },
       ],
     };
@@ -183,13 +169,11 @@ body {
   color: white !important;
 }
 
-.v-list-group--active .v-list-item__title {
-  font-weight: bold !important;
-}
-
+.v-list-group--active .v-list-item__title,
 .v-list-item--active .v-list-item__title {
   font-weight: bold !important;
 }
+
 .v-card .v-card-text {
   line-height: 1.425;
   width: 325px;
@@ -203,7 +187,7 @@ header.v-toolbar.v-toolbar--density-default.v-theme--light.v-locale--is-ltr.v-ap
 }
 /* titel & app */
 .v-toolbar__content > .v-btn:nth-child(1) {
-  margin-inline-start: 200px;
+  margin-inline-start: 150px;
 }
 .v-navigation-drawer__content h2 {
   margin-top: 38px !important;
@@ -225,5 +209,8 @@ header.v-toolbar.v-toolbar--density-default.v-theme--light.v-locale--is-ltr.v-ap
 }
 .d-flex.ml-1 {
   flex-wrap: nowrap !important;
+}
+.v-list-group__items .v-list-item[data-v-7ba5bd90] {
+  padding-inline-start: calc(-38px + var(--indent-padding)) !important;
 }
 </style>
